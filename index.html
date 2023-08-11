@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Fitlit</title>
+  <link rel="stylesheet" href="../src/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+  <script src="https://kit.fontawesome.com/c0bac25450.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header class="upper-pane">
+    <div class="upper-left-pane">
+      <img id="icon" alt="profile picture"></img>
+      <div class="user-greeting-wrapper">
+        <p class="user-greeting"></p>
+        <button class="user-info-button" alt="user info button">Your Info</button>
+      </div>
+    </div>
+    <div class="upper-right-pane">
+      <h1 class="app-name">FitLit</h1>
+    </div>
+  </header>
+  <main>
+    <section class="alt-lower-pane hidden">
+      <section class="profile-box">
+        <div class="list" id="property names">
+          <div class="user-info-page">
+            <p class="left-element">Name:</p>
+            <p class="user-name"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Address:</p>
+            <p class="user-address"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Email:</p>
+            <p class="user-email"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Stride Length:</p>
+            <p class="user-stride-length"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Daily Step Goal:</p>
+            <p class="user-step-goal"></p>
+          </div>
+          <div class="user-info-page">
+            <p class="left-element">Friends:</p>
+            <p class="user-friends"></p>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section class="lower-pane">
+      <div id="sortable-container">
+        <article class="data-box click-and-hold" id="box1">
+          <div class="box-title">
+            <h2><i class="fa-solid fa-grip" style="color: #515152;" aria-hidden="true"></i>Your Data</h2>
+          </div>
+          <div class="box-contents-container">
+            <div class="box-contents">
+              <p class="data-title">My Step Goal:</p>
+              <div class="number-with-units">
+                <p class="user-daily-step-goal number"></p>
+                <p class="units">steps</p>
+              </div>
+            </div>
+            <div class="box-contents">
+              <p class="data-title">Average User Step Goal:</p>
+              <div class="number-with-units">
+                <p class="average-step number"></p>
+                <p class="units">steps</p>
+              </div>
+            </div>
+            <div class="box-contents">
+              <p class="data-title">Step Challenge:</p>
+              <div class="challenge-results">
+                <p>steps</p>
+              </div>
+            </div>
+          </div>
+          <div class="data-analysis">
+            <p class="avg-user-step-comparison">
+              Your step goal is 200% of the average user's step goal!
+            </p>
+          </div>
+        </article>
+        <article class="data-box hydro-data-box click-and-hold" id="box2">
+          <div class="hydro-box-title">
+            <h2><i class="fa-solid fa-grip" style="color: #515152;" aria-hidden="true"></i>Hydration</h2>
+            <div class="hydration-input-wrapper">
+              <label class="error-message" for="user-hydration-input">Enter today's water intake</label>
+              <input type="text" id="user-hydration-input" placeholder="# ounces of water" maxlength="3">
+              <button class="user-hydration-input-button">Submit</button>
+            </div>
+          </div>
+          <div class="box-contents-container">
+            <div class="box-contents2 small-box">
+              <p class="water-text data-title">Yesterday, you drank:</p>
+              <div class="number-with-units">
+                <p class="todays-hydro number">20</p>
+                <p class="units">oz</p>
+              </div>
+            </div>
+            <figure class="graph-chart">
+              <canvas id="hydroChart" aria-hidden="true"></canvas>
+              <div class="visually-hidden">
+                Bar chart showing last week's water intake
+              </div>
+            </figure>
+            <div class="box-contents2 small-box small-box-right">
+              <p class="data-title">
+                This past week, you drank an average of:
+              </p>
+              <div class="number-with-units">
+                <p class="average-water number">70</p>
+                <p class="units">oz/day</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="data-box sleep-box click-and-hold">
+          <div class="box-title">
+            <h2><i class="fa-solid fa-grip" style="color: #515152;" aria-hidden="true"></i>Sleep</h2>
+          </div>
+          <div class="box-contents-container sleep-data-wrapper">
+            <div class="last-night-sleep small-box">
+              <div class="box-contents2">
+                <p class="data-title">Last night you slept:</p>
+                <div class="number-with-units">
+                  <p class="todays-hourly-sleep number">20</p>
+                  <p class="units">hours</p>
+                </div>
+              </div>
+              <div class="box-contents2">
+                <p class="data-title">Your sleep quality rating:</p>
+                <div class="number-with-units">
+                  <p class="todays-quality-sleep-num number">2</p>
+                  <p class="sleep-quality-today-descriptive units">/5 good</p>
+                </div>
+              </div>
+            </div>
+            <div class="graph-chart sleep-graph-wrapper">
+              <figure class="sleep-graph-chart">
+                <canvas id="sleep-hourly-graph" aria-hidden="true"></canvas>
+              </figure>
+              <div class="visually-hidden">
+                Bar chart displaying the hours slept each night for the previous week
+              </div>
+              <figure class="sleep-graph-chart">
+                <canvas id="sleep-quality-graph" aria-hidden="true"></canvas>
+              </figure>
+              <div class="visually-hidden">
+                Bar chart displaying the quality of sleep each night for the previous week
+              </div>
+            </div>
+            <div class="average-sleep small-box small-box-right">
+              <div class="box-contents2">
+                <p class="data-title">Last week you slept:</p>
+                <div class="number-with-units">
+                  <p class="average-hours-slept number">20</p>
+                  <p class="units">hours/night</p>
+                </div>
+              </div>
+              <div class="box-contents2">
+                <p class="data-title">Your average sleep quality:</p>
+                <div class="number-with-units">
+                  <p class="average-quality-slept-num number"></p>
+                  <p class="sleep-quality-avg-descriptive units">good</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="data-box activity-data click-and-hold" id="box4">
+          <div class="box-title">
+            <h2><i class="fa-solid fa-grip" style="color: #515152;" aria-hidden="true"></i>Your Activity Summarized</h2>
+          </div>
+          <div class="activity-box-contents-container">
+            <div class="user-activity-graph">
+              <figure class="user-activity-chart">
+                <canvas id="user-activity-graph" aria-hidden="true"></canvas>
+              </figure>
+              <div class="visually-hidden">
+                Bar chart displaying the quality of sleep each night for the previous week
+              </div>
+            </div>
+            <div class="box-contents-wrapper">
+              <div class="box-contents activity-data-boxes">
+                <p class="data-title">Today you were active for:</p>
+                <div class="number-with-units">
+                  <p class="minutes-active number">6</p>
+                  <p class="units">minutes</p>
+                </div>
+              </div>
+              <div class="box-contents activity-data-boxes">
+                <p class="data-title">During that time, you took:</p>
+                <div class="number-with-units">
+                  <p class="step-amount number">6</p>
+                  <p class="units">steps</p>
+                </div>
+              </div>
+              <div class="box-contents activity-data-boxes">
+                <p class="data-title">Which equates to:</p>
+                <div class="number-with-units">
+                  <p class="miles-walked number">8</p>
+                  <p class="units">Miles</p>
+                </div>
+              </div>
+            </div>
+            <figure class="activity-trend-graph">
+              <p class="activity-trend-title">🔥 You've increased your activity 3 days in a row! 🔥</p>
+              <canvas id="activity-trend-graph-display"></canvas>
+            </figure>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script src="bundle.js"></script>
+</body>
+
+</html>
