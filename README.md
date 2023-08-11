@@ -56,7 +56,9 @@ This project was our first chance to practice accessing and updating API dataset
 ![Chart.js](https://img.shields.io/badge/Chart.js-blue)
 
 ## Installation and Setup Instructions
+You can find the deployed feature [here](https://jwensloff.github.io/fitLit/).
 
+Alternatively, you can: 
 Clone down this repository to run the front-end application. Additionally, you will need to navigate to this 
 [back-end api](https://github.com/turingschool-examples/fitlit-api.git
 ), and follow the set-up instructions. 
